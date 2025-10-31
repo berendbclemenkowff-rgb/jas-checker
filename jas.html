@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Heeft Jordy zijn jas al aan?</title>
+<style>
+  body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    text-align: center;
+  }
+  h1 { font-size: 2rem; margin-bottom: 2rem; }
+  #antwoord {
+    font-size: 5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  .ja { color: green; }
+  .nee { color: red; }
+  .misschien { color: orange; }
+  .waarschijnlijk { color: blue; }
+  #quote { font-size: 1.5rem; font-style: italic; max-width: 80%; }
+  button { margin-top: 2rem; padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; }
+</style>
+</head>
+<body>
+
+<h1>Heeft Jordy zijn jas al aan?</h1>
+<div id="antwoord">...</div>
+<div id="quote"></div>
+<button onclick="nieuwAntwoord()">Nieuw antwoord</button>
+
+<script>
+const antwoorden = [
+  {text: "JA", class: "ja"},
+  {text: "NEE", class: "nee"},
+  {text: "MISSCHIEN", class: "misschien"},
+  {text: "WAARSCHIJNLIJK WEL", class: "waarschijnlijk"}
+];
+
+const quotes = [
+  "Een jas is niet alleen kleding, het is een houding.",
+  "De beste manier om je warm te houden is een glimlach… en een jas.",
+  "Sommige jassen vertellen verhalen, deze vraag ook.",
+  "Een jas kan je dag maken, of de juiste keuze zijn voor nu.",
+  "In twijfel? Trek een jas aan en ga ervoor."
+];
+
+function nieuwAntwoord() {
+  const antwoord = antwoorden[Math.floor(Math.random() * antwoorden.length)];
+  const quote = quotes[Math.floor(Math.random() * quotes.length)];
+
+  const antwoordDiv = document.getElementById('antwoord');
+  const quoteDiv = document.getElementById('quote');
+
+  antwoordDiv.textContent = antwoord.text;
+  antwoordDiv.className = antwoord.class;
+  quoteDiv.textContent = quote;
+}
+
+// Geef meteen bij het laden een antwoord
+nieuwAntwoord();
+</script>
+
+</body>
+</html>
